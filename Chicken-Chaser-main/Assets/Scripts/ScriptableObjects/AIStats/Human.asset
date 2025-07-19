@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf1bdf930bdd4b4f9a2f19b055c218f, type: 3}
+  m_Name: Human
+  m_EditorClassIdentifier: 
+  maxDetection: 100
+  detectionDecayRate: 5
+  beginDecayCooldown: 3
+  lookingStateDetectionModifier: 2
+  idleStateDetectionModifier: 1
+  baseMoveSpeed: 2
+  chaseMoveSpeed: 4
+  rollSpeed: 6
+  lookRotationAngle: 15
+  minIdleTime: 1
+  maxIdleTime: 3
+  diveDistance: 3
+  ignoreWhileChasing: 2
+  huhs:
+  - {fileID: 8300000, guid: 71e9e08a514155b4683630d99cf3bd51, type: 3}
+  - {fileID: 8300000, guid: f81ed6c268049084882620e3e544967a, type: 3}
+  heys:
+  - {fileID: 8300000, guid: 761464fb3d7bf1647ba8b1cb0cdabf9b, type: 3}
+  - {fileID: 8300000, guid: d0df79c337a19b94dab1ef91ed8c2a5c, type: 3}
+  huhLoudness: 2
+  heyLoudness: 2
+  timeNeededToTalk: 1
