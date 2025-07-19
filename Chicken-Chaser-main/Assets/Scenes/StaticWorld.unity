@@ -43,7 +43,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -4117,6 +4118,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1001 &483896921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16340,7 +16342,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 444715576d01eb34abdc10ad114e7cc2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6138906
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 444715576d01eb34abdc10ad114e7cc2,
         type: 3}

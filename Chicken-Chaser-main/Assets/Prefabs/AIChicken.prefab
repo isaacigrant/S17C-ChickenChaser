@@ -163,6 +163,8 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 89adb722b14542a4e81ed6d32a158c24, type: 2}
   head: {fileID: 2734304907029226763}
   foot: {fileID: 821473674308985966}
+  landEffect: {fileID: 80139270534471525, guid: 61f8ddca288751145acb1fe5a748a7ee,
+    type: 3}
   visibility: 1
   activeHearing: {fileID: 11400000, guid: bea74cc03f6df55409ece03fb1d40aba, type: 2}
 --- !u!1 &8273480113772969671

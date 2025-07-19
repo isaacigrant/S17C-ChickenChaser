@@ -16,3 +16,5 @@ MonoBehaviour:
   maxSpeed: 2
   footRadius: 0.2
   footDistance: 0.5
+  caughtSound: {fileID: 8300000, guid: 64182044c8ae1c846a7e05b50accd023, type: 3}
+  freedSound: {fileID: 8300000, guid: 6ec94612bd34f33418d2177af51b3b91, type: 3}

@@ -93,12 +93,14 @@ public class AiChicken : Chicken, IDetector
     {
         animatorController.SetFloat(StaticUtilities.MoveSpeedAnimID, 0);
         OnCaught.Invoke();
+        GameManager.PlayUISound(stats.CaughtSound);
     }
 
     public override void OnFreedFromCage()
     {
         enabled = true;
         OnFreed.Invoke();
+        GameManager.PlayUISound(stats.FreedSound);
     }
 
     public override void OnEscaped(Vector3 position)

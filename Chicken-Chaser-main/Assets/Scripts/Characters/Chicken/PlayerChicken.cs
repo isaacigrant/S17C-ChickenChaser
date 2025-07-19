@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Utilities;
+using Managers;
 
 public class PlayerChicken : Chicken
 {
@@ -17,6 +18,10 @@ public class PlayerChicken : Chicken
     [SerializeField] private AbstractAbility jumpAbility;
     [SerializeField] private AbstractAbility cluckAbility;
     [SerializeField] private AbstractAbility dashAbility;
+    [Header("Effects")]
+    [SerializeField] private GameObject lossCam;
+
+
 
     public static Action<Vector3> OnPlayerCaught;
     public static Action<Vector3> OnPlayerEscaped;
@@ -26,6 +31,8 @@ public class PlayerChicken : Chicken
     {
         physicsBody.isKinematic = false;
         bodyColider.enabled = true;
+        SettingsManager.SaveFile.onLookSenseChanged += OnLookSenseChanged;
+        lookSpeed = SettingsManager.currentSettings.LookSensitivity;
     }
 
     protected override void Awake()
@@ -40,11 +47,11 @@ public class PlayerChicken : Chicken
     {
         physicsBody.isKinematic = true;
         bodyColider.enabled = false;
-
         PlayerControls.DisablePlayer();
         jumpAbility.ForceCancelAbility();
         cluckAbility.ForceCancelAbility();
         dashAbility.ForceCancelAbility();
+        SettingsManager.SaveFile.onLookSenseChanged -= OnLookSenseChanged;
     }
 
     public void SetDashState(bool state)
@@ -103,6 +110,8 @@ public class PlayerChicken : Chicken
         OnPlayerRescued?.Invoke();
 
         cluckAbility.StopUsingAbility();
+        lossCam.SetActive(false);
+        GameManager.PlayUISound(stats.FreedSound);
     }
 
     public override void OnEscaped(Vector3 position)
@@ -137,6 +146,8 @@ public class PlayerChicken : Chicken
         visibility = 0;
 
         OnPlayerCaught?.Invoke(transform.position);
+        lossCam.SetActive(true);
+        GameManager.PlayUISound(stats.CaughtSound);
     }
 
     private void HandleLooking()
@@ -165,5 +176,9 @@ public class PlayerChicken : Chicken
     public AbstractAbility GetDashAbility()
     {
         return dashAbility;
+    }
+    private void OnLookSenseChanged(float val)
+    { 
+        lookSpeed = val;
     }
 }

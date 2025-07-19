@@ -1,4 +1,6 @@
+using Characters;
 using Interfaces;
+using System;
 using UnityEngine;
 using Utilities;
 
@@ -10,6 +12,9 @@ public abstract class Chicken : MonoBehaviour, IVisualDetectable, ITrappable
     [SerializeField] protected Transform head;
     [SerializeField] protected Transform foot;
 
+    [SerializeField]private ParticleSystem landEffect;
+
+    protected AudioSource audio;
     protected Rigidbody physicsBody;
     protected Animator animatorController;
     protected Collider bodyColider;
@@ -27,6 +32,10 @@ public abstract class Chicken : MonoBehaviour, IVisualDetectable, ITrappable
         physicsBody = GetComponent<Rigidbody>();
         animatorController = GetComponentInChildren<Animator>();
         bodyColider = GetComponentInChildren<Collider>();
+        audio = GetComponentInChildren<AudioSource>();
+        ChickenAnimatorReceiver car = transform.GetChild(0).GetComponent<ChickenAnimatorReceiver>();
+        car.OnLandEffect += HandleLanding;
+
     }
 
     private void FixedUpdate()
@@ -60,7 +69,7 @@ public abstract class Chicken : MonoBehaviour, IVisualDetectable, ITrappable
 
             if (currentFallTime >= 0)
             {
-                HandleLanding();
+                HandleLanding(MathF.Max(currentFallTime/2, 3));
                 currentFallTime = 0;
             }
         }
@@ -69,9 +78,10 @@ public abstract class Chicken : MonoBehaviour, IVisualDetectable, ITrappable
         else slopeNormal = slope.normal;
     }
 
-    protected virtual void HandleLanding()
+    protected virtual void HandleLanding(float force)
     {
-
+        landEffect.emission.SetBurst(0, new ParticleSystem.Burst(0, UnityEngine.Random.Range(10, 20)* force));
+        landEffect.Play();
     }
     protected virtual void HandleAnims()
     {
