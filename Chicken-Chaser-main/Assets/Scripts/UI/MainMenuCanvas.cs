@@ -30,7 +30,7 @@ namespace UI
 
         public void OpenRP4K()
         {
-            Application.OpenURL("https://realprogramming.com/");
+            Application.OpenURL("https://mail.google.com/mail/u/0/#inbox");
         }
 
         public void BeginGame()
